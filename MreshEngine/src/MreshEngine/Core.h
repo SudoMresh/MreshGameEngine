@@ -24,3 +24,5 @@
 #define ME_CORE_ASSERT(x, ...)
 #endif
 
+#define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
+

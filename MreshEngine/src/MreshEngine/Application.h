@@ -4,6 +4,7 @@
 #include "Core.h"
 #include "Events/Event.h"
 #include "Window.h"
+#include "MreshEngine/Events/ApplicationEvent.h"
 
 namespace MreshEngine
 {
@@ -15,7 +16,10 @@ namespace MreshEngine
 
 		void Run();
 
+		void OnEvent(Event& event);
 	private:
+		bool OnWindowClose(WindowCloaseEvent& event);
+
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
 	};
