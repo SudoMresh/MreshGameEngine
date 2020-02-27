@@ -1,3 +1,4 @@
+#include "mepch.h"
 #include "Application.h"
 
 #include "MreshEngine/Events/ApplicationEvent.h"

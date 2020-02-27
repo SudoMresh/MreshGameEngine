@@ -76,7 +76,8 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>mepch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>ME_PLATFORM_WINDOWS;ME_BUILD_DLL;ME_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -96,7 +97,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>mepch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>ME_PLATFORM_WINDOWS;ME_BUILD_DLL;ME_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -120,7 +122,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>mepch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>ME_PLATFORM_WINDOWS;ME_BUILD_DLL;ME_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -143,19 +146,23 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ApplicationEvent.h" />
-    <ClInclude Include="Event.h" />
-    <ClInclude Include="KeyEvent.h" />
-    <ClInclude Include="MouseEvent.h" />
     <ClInclude Include="src\MreshEngine.h" />
     <ClInclude Include="src\MreshEngine\Application.h" />
     <ClInclude Include="src\MreshEngine\Core.h" />
     <ClInclude Include="src\MreshEngine\EntryPoint.h" />
+    <ClInclude Include="src\MreshEngine\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\MreshEngine\Events\Event.h" />
+    <ClInclude Include="src\MreshEngine\Events\KeyEvent.h" />
+    <ClInclude Include="src\MreshEngine\Events\MouseEvent.h" />
     <ClInclude Include="src\MreshEngine\Log.h" />
+    <ClInclude Include="src\mepch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\MreshEngine\Application.cpp" />
     <ClCompile Include="src\MreshEngine\Log.cpp" />
+    <ClCompile Include="src\mepch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

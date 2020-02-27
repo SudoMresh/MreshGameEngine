@@ -4,8 +4,8 @@
     <Filter Include="MreshEngine">
       <UniqueIdentifier>{1A9549DA-864A-C2CF-0F3F-BCA67BF3B8D3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MreshEngine\Event">
-      <UniqueIdentifier>{4374dc25-562c-48f9-8c9b-4de68ba943ab}</UniqueIdentifier>
+    <Filter Include="MreshEngine\Events">
+      <UniqueIdentifier>{BE3F3569-AA23-F6BE-1384-F011FF86E040}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -19,21 +19,22 @@
     <ClInclude Include="src\MreshEngine\EntryPoint.h">
       <Filter>MreshEngine</Filter>
     </ClInclude>
+    <ClInclude Include="src\MreshEngine\Events\ApplicationEvent.h">
+      <Filter>MreshEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MreshEngine\Events\Event.h">
+      <Filter>MreshEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MreshEngine\Events\KeyEvent.h">
+      <Filter>MreshEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MreshEngine\Events\MouseEvent.h">
+      <Filter>MreshEngine\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\MreshEngine\Log.h">
       <Filter>MreshEngine</Filter>
     </ClInclude>
-    <ClInclude Include="ApplicationEvent.h">
-      <Filter>MreshEngine\Event</Filter>
-    </ClInclude>
-    <ClInclude Include="Event.h">
-      <Filter>MreshEngine\Event</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyEvent.h">
-      <Filter>MreshEngine\Event</Filter>
-    </ClInclude>
-    <ClInclude Include="MouseEvent.h">
-      <Filter>MreshEngine\Event</Filter>
-    </ClInclude>
+    <ClInclude Include="src\mepch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\MreshEngine\Application.cpp">
@@ -42,5 +43,6 @@
     <ClCompile Include="src\MreshEngine\Log.cpp">
       <Filter>MreshEngine</Filter>
     </ClCompile>
+    <ClCompile Include="src\mepch.cpp" />
   </ItemGroup>
 </Project>

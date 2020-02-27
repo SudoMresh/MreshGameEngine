@@ -1,3 +1,4 @@
+#include "mepch.h"
 #include "Log.h"
 
 namespace MreshEngine

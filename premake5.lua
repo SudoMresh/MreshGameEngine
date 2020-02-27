@@ -17,6 +17,9 @@ project "MreshEngine"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	
+	pchheader "mepch.h"
+	pchsource "MreshEngine/src/mepch.cpp"
 
 	files
 	{

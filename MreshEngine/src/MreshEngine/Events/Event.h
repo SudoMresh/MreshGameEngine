@@ -2,8 +2,6 @@
 
 #include "MreshEngine/Core.h"
 
-#include <string>
-#include <functional>
 
 namespace MreshEngine
 {
