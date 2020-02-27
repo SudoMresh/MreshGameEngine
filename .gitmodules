@@ -1,0 +1,3 @@
+[submodule "MreshEngine/vendor/GLFW"]
+	path = MreshEngine/vendor/GLFW
+	url = https://github.com/TheCherno/glfw

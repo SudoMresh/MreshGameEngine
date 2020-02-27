@@ -7,6 +7,9 @@
     <Filter Include="MreshEngine\Events">
       <UniqueIdentifier>{BE3F3569-AA23-F6BE-1384-F011FF86E040}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\MreshEngine.h" />
@@ -34,6 +37,12 @@
     <ClInclude Include="src\MreshEngine\Log.h">
       <Filter>MreshEngine</Filter>
     </ClInclude>
+    <ClInclude Include="src\MreshEngine\Window.h">
+      <Filter>MreshEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\WindowsWindow.h">
+      <Filter>Platform</Filter>
+    </ClInclude>
     <ClInclude Include="src\mepch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +51,9 @@
     </ClCompile>
     <ClCompile Include="src\MreshEngine\Log.cpp">
       <Filter>MreshEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\WindowsWindow.cpp">
+      <Filter>Platform</Filter>
     </ClCompile>
     <ClCompile Include="src\mepch.cpp" />
   </ItemGroup>
