@@ -4,6 +4,9 @@
     <Filter Include="MreshEngine">
       <UniqueIdentifier>{1A9549DA-864A-C2CF-0F3F-BCA67BF3B8D3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MreshEngine\Event">
+      <UniqueIdentifier>{4374dc25-562c-48f9-8c9b-4de68ba943ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\MreshEngine.h" />
@@ -18,6 +21,18 @@
     </ClInclude>
     <ClInclude Include="src\MreshEngine\Log.h">
       <Filter>MreshEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="ApplicationEvent.h">
+      <Filter>MreshEngine\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>MreshEngine\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyEvent.h">
+      <Filter>MreshEngine\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseEvent.h">
+      <Filter>MreshEngine\Event</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
