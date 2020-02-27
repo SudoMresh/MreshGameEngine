@@ -64,14 +64,17 @@ project "MreshEngine"
 
 	filter "configurations:Debug"
 		defines "ME_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 	
 	filter "configurations:Release"
 		defines "ME_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "ME_DIST"
+		buildoptions "/MD"
 		optimize "On"
 	
 project "Sandbox"
@@ -111,12 +114,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "ME_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 	
 	filter "configurations:Release"
 		defines "ME_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "ME_DIST"
+		buildoptions "/MD"
 		optimize "On"

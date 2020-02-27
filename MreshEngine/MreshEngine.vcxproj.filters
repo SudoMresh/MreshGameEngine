@@ -34,6 +34,12 @@
     <ClInclude Include="src\MreshEngine\Events\MouseEvent.h">
       <Filter>MreshEngine\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\MreshEngine\Layer.h">
+      <Filter>MreshEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MreshEngine\LayerStack.h">
+      <Filter>MreshEngine</Filter>
+    </ClInclude>
     <ClInclude Include="src\MreshEngine\Log.h">
       <Filter>MreshEngine</Filter>
     </ClInclude>
@@ -47,6 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\MreshEngine\Application.cpp">
+      <Filter>MreshEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MreshEngine\Layer.cpp">
+      <Filter>MreshEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MreshEngine\LayerStack.cpp">
       <Filter>MreshEngine</Filter>
     </ClCompile>
     <ClCompile Include="src\MreshEngine\Log.cpp">
