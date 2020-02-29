@@ -1,14 +1,19 @@
 #include "mepch.h"
 #include "Application.h"
 
-#include <GLFW/glfw3.h>
+#include <glad/glad.h>
 
 namespace MreshEngine
 {
+	Application* Application::s_Instance = nullptr;
+
 	Application::Application()
 	{
+		ME_CORE_ASSERT(!s_Instance, "Application already exists!");
+		s_Instance = this;
+		
 		m_Window = std::unique_ptr<Window>(Window::Create());
-		m_Window->SetEventCallBack(BIND_EVENT_FN(Application::OnEvent));
+		m_Window->SetEventCallBack(ME_BIND_EVENT_FN(Application::OnEvent));
 	}
 
 	Application::~Application()
@@ -32,7 +37,7 @@ namespace MreshEngine
 	void Application::OnEvent(Event& event)
 	{
 		EventDispatcher dispatcher(event);
-		dispatcher.Dispatch<WindowCloaseEvent>(BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowCloaseEvent>(ME_BIND_EVENT_FN(Application::OnWindowClose));
 
 		ME_CORE_TRACE("{0}", event);
 
@@ -47,11 +52,13 @@ namespace MreshEngine
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLater(layer);
+		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* layer)
 	{
 		m_LayerStack.PushOverlay(layer);
+		layer->OnAttach();
 	}
 
 	bool Application::OnWindowClose(WindowCloaseEvent& event)

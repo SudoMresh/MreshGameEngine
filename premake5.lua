@@ -13,8 +13,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "MreshEngine/vendor/GLFW/include"
+IncludeDir["Glad"] = "MreshEngine/vendor/Glad/include"
+IncludeDir["ImGui"] = "MreshEngine/vendor/imgui"
 
 include "MreshEngine/vendor/GLFW"
+include "MreshEngine/vendor/Glad"
+include "MreshEngine/vendor/imgui"
 
 project "MreshEngine"
 	location "MreshEngine"
@@ -37,12 +41,16 @@ project "MreshEngine"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 	
 	links
 	{
+		"Glad",
 		"GLFW",
+		"ImGui",
 		"opengl32.lib"
 	}
 
@@ -54,7 +62,8 @@ project "MreshEngine"
 		defines
 		{
 			"ME_PLATFORM_WINDOWS",
-			"ME_BUILD_DLL"
+			"ME_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands

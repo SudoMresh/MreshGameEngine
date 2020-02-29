@@ -5,6 +5,8 @@
 #include "MreshEngine/Events/KeyEvent.h"
 #include "MreshEngine/Events/ApplicationEvent.h"
 
+#include <glad/glad.h>
+
 namespace MreshEngine
 {
 	static bool s_GLFWInitialized = false;
@@ -68,6 +70,8 @@ namespace MreshEngine
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		ME_CORE_ASSERT(status, "Failed to initialize Glad!");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
@@ -87,6 +91,13 @@ namespace MreshEngine
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			WindowCloaseEvent event;
+			data.EventCallback(event);
+		});
+
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode)
+		{
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			KeyTypedEvent event(keycode);
 			data.EventCallback(event);
 		});
 
@@ -125,7 +136,7 @@ namespace MreshEngine
 			{
 				case GLFW_PRESS:
 				{
-					MosueButtonPressedEvent event(button);
+					MouseButtonPressedEvent event(button);
 					data.EventCallback(event);
 					break;
 				}

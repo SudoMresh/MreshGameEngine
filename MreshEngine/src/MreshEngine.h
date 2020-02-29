@@ -5,6 +5,7 @@
 #include "MreshEngine/Application.h"
 #include "MreshEngine/Layer.h"
 #include "MreshEngine/Log.h"
+#include "MreshEngine/ImGui/ImGuiLayer.h"
 
 // -----Entry Point-----------
 #include "MreshEngine/EntryPoint.h"

@@ -1,3 +1,6 @@
 [submodule "MreshEngine/vendor/GLFW"]
 	path = MreshEngine/vendor/GLFW
 	url = https://github.com/TheCherno/glfw
+[submodule "MreshEngine/vendor/imgui"]
+	path = MreshEngine/vendor/imgui
+	url = https://github.com/TheCherno/imgui

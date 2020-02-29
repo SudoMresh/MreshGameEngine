@@ -62,10 +62,10 @@ namespace MreshEngine
 		int m_Button;
 	};
 
-	class MRESH_API MosueButtonPressedEvent : public MouseButtonEvent
+	class MRESH_API MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
-		MosueButtonPressedEvent(int button)
+		MouseButtonPressedEvent(int button)
 			: MouseButtonEvent(button) {}
 
 		std::string ToString() const override
