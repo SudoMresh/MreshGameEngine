@@ -3,6 +3,8 @@
 
 #include <glad/glad.h>
 
+#include "Input.h"
+
 namespace MreshEngine
 {
 	Application* Application::s_Instance = nullptr;
@@ -29,6 +31,9 @@ namespace MreshEngine
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
+
+			auto[xPos, yPos] = Input::GetMousePosition();
+			ME_CORE_TRACE("{0}, {1}", xPos, yPos);
 
 			m_Window->OnUpdate();
 		}
