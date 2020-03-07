@@ -17,6 +17,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "MreshEngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "MreshEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "MreshEngine/vendor/imgui"
+IncludeDir["glm"] = "MreshEngine/vendor/glm"
 
 include "MreshEngine/vendor/GLFW"
 include "MreshEngine/vendor/Glad"
@@ -37,7 +38,9 @@ project "MreshEngine"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
 	
 	includedirs
@@ -46,7 +49,8 @@ project "MreshEngine"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 	
 	links
@@ -106,7 +110,9 @@ project "Sandbox"
 	includedirs
 	{
 		"MreshEngine/vendor/spdlog/include",
-		"MreshEngine/src"
+		"MreshEngine/src",
+		"MreshEngine/vendor",
+		"%{IncludeDir.glm}"
 	}
 
 	links 
