@@ -10,12 +10,17 @@ public:
 
 	void OnUpdate() override
 	{
-		ME_INFO("ExampleLayer::Update");
+		if (MreshEngine::Input::IsKeyPressed(ME_KEY_TAB))
+			ME_TRACE("Tab key is pressed");
 	}
 
 	void OnEvent(MreshEngine::Event& event) override
 	{
-		ME_TRACE("{0}", event);
+		if (event.GetEventType() == MreshEngine::EventType::KeyPressed)
+		{
+			MreshEngine::KeyPressedEvent& keyEvent = (MreshEngine::KeyPressedEvent&)event;
+			ME_TRACE("{0}", (char)keyEvent.GetKeyCode());
+		}
 	}
 };
 

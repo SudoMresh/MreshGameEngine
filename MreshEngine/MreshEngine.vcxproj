@@ -159,9 +159,12 @@
     <ClInclude Include="src\MreshEngine\Events\MouseEvent.h" />
     <ClInclude Include="src\MreshEngine\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\MreshEngine\Input.h" />
+    <ClInclude Include="src\MreshEngine\KeyCodes.h" />
     <ClInclude Include="src\MreshEngine\Layer.h" />
     <ClInclude Include="src\MreshEngine\LayerStack.h" />
     <ClInclude Include="src\MreshEngine\Log.h" />
+    <ClInclude Include="src\MreshEngine\MouseButtonCodes.h" />
+    <ClInclude Include="src\MreshEngine\MreshEngine.h" />
     <ClInclude Include="src\MreshEngine\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
