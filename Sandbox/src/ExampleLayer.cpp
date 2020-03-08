@@ -122,7 +122,6 @@ ExampleLayer::ExampleLayer()
 	auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 	m_Texture = MreshEngine::Texture2D::Create("assets/textures/Checkerboard.png");
-	m_ChernoLogoTexture = MreshEngine::Texture2D::Create("assets/textures/ChernoLogo.png");
 
 	textureShader->Bind();
 	textureShader->SetInt("u_Texture", 0);

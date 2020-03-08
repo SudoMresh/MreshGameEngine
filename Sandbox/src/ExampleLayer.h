@@ -22,7 +22,7 @@ private:
 	MreshEngine::Ref<MreshEngine::Shader> m_FlatColorShader;
 	MreshEngine::Ref<MreshEngine::VertexArray> m_SquareVA;
 
-	MreshEngine::Ref<MreshEngine::Texture2D> m_Texture, m_ChernoLogoTexture;
+	MreshEngine::Ref<MreshEngine::Texture2D> m_Texture;
 
 	MreshEngine::OrthographicCameraController m_CameraController;
 	glm::vec3 m_SquareColor = { 0.2f, 0.3f, 0.8f };
