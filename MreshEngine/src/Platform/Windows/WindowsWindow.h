@@ -1,6 +1,7 @@
 #pragma once
 
-#include "MreshEngine/Window.h"
+#include "MreshEngine/Core/Window.h"
+#include "MreshEngine/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -14,22 +15,21 @@ namespace MreshEngine
 
 		void OnUpdate() override;
 
-		// Inherited via Window
-		virtual unsigned int GetWidth() const override { return m_Data.Width; }
-		virtual unsigned int GetHeight() const override { return m_Data.Height; }
+		inline unsigned int GetWidth() const override { return m_Data.Width; }
+		inline unsigned int GetHeight() const override { return m_Data.Height; }
 
-		// Window attribute
-		virtual void SetEventCallBack(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
-		virtual void SetVSync(bool enable) override;
-		virtual bool IsVSync() const override;
+		// Window attributes
+		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
+		void SetVSync(bool enabled) override;
+		bool IsVSync() const override;
 
-		inline virtual void* GetNativeWindow() const override { return m_Window; }
+		inline virtual void* GetNativeWindow() const { return m_Window; }
 	private:
 		virtual void Init(const WindowProps& props);
 		virtual void Shutdown();
-	
 	private:
 		GLFWwindow* m_Window;
+		Scope<GraphicsContext> m_Context;
 
 		struct WindowData
 		{
@@ -42,5 +42,5 @@ namespace MreshEngine
 
 		WindowData m_Data;
 	};
-}
 
+}

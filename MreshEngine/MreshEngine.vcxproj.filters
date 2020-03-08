@@ -7,11 +7,20 @@
     <Filter Include="src\MreshEngine">
       <UniqueIdentifier>{B1C823F2-1D54-91B6-2665-14AB926FEDB6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\MreshEngine\Core">
+      <UniqueIdentifier>{A9031BE8-9592-A4B1-3EB1-B8AC2A1FB557}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\MreshEngine\Debug">
+      <UniqueIdentifier>{E7D387EB-5340-43E6-1C34-DB43885F654E}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\MreshEngine\Events">
       <UniqueIdentifier>{75A30C60-619D-35B2-4A0A-CCC236A39B1E}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\MreshEngine\ImGui">
       <UniqueIdentifier>{9B3EE6EB-07AB-A1E6-D09E-39443CCAC34E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\MreshEngine\Renderer">
+      <UniqueIdentifier>{7763BE8C-6388-0D0D-8CD3-F29C78570C2B}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
@@ -43,19 +52,49 @@
     <Filter Include="vendor\glm\glm\gtx">
       <UniqueIdentifier>{B3A6A76B-9F8A-68C1-08EB-6214F4ED5243}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\MreshEngine.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\MreshEngine\Application.h">
-      <Filter>src\MreshEngine</Filter>
+    <ClInclude Include="src\MreshEngine\Core\Application.h">
+      <Filter>src\MreshEngine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\MreshEngine\Core.h">
-      <Filter>src\MreshEngine</Filter>
+    <ClInclude Include="src\MreshEngine\Core\Core.h">
+      <Filter>src\MreshEngine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\MreshEngine\EntryPoint.h">
-      <Filter>src\MreshEngine</Filter>
+    <ClInclude Include="src\MreshEngine\Core\EntryPoint.h">
+      <Filter>src\MreshEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MreshEngine\Core\Input.h">
+      <Filter>src\MreshEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MreshEngine\Core\KeyCodes.h">
+      <Filter>src\MreshEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MreshEngine\Core\Layer.h">
+      <Filter>src\MreshEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MreshEngine\Core\LayerStack.h">
+      <Filter>src\MreshEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MreshEngine\Core\Log.h">
+      <Filter>src\MreshEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MreshEngine\Core\MouseCodes.h">
+      <Filter>src\MreshEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MreshEngine\Core\Timestep.h">
+      <Filter>src\MreshEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MreshEngine\Core\Window.h">
+      <Filter>src\MreshEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MreshEngine\Debug\Instrumentor.h">
+      <Filter>src\MreshEngine\Debug</Filter>
     </ClInclude>
     <ClInclude Include="src\MreshEngine\Events\ApplicationEvent.h">
       <Filter>src\MreshEngine\Events</Filter>
@@ -72,31 +111,55 @@
     <ClInclude Include="src\MreshEngine\ImGui\ImGuiLayer.h">
       <Filter>src\MreshEngine\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\MreshEngine\Input.h">
-      <Filter>src\MreshEngine</Filter>
+    <ClInclude Include="src\MreshEngine\Renderer\Buffer.h">
+      <Filter>src\MreshEngine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\MreshEngine\KeyCodes.h">
-      <Filter>src\MreshEngine</Filter>
+    <ClInclude Include="src\MreshEngine\Renderer\GraphicsContext.h">
+      <Filter>src\MreshEngine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\MreshEngine\Layer.h">
-      <Filter>src\MreshEngine</Filter>
+    <ClInclude Include="src\MreshEngine\Renderer\OrthographicCamera.h">
+      <Filter>src\MreshEngine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\MreshEngine\LayerStack.h">
-      <Filter>src\MreshEngine</Filter>
+    <ClInclude Include="src\MreshEngine\Renderer\OrthographicCameraController.h">
+      <Filter>src\MreshEngine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\MreshEngine\Log.h">
-      <Filter>src\MreshEngine</Filter>
+    <ClInclude Include="src\MreshEngine\Renderer\RenderCommand.h">
+      <Filter>src\MreshEngine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\MreshEngine\MouseButtonCodes.h">
-      <Filter>src\MreshEngine</Filter>
+    <ClInclude Include="src\MreshEngine\Renderer\Renderer.h">
+      <Filter>src\MreshEngine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\MreshEngine\MreshEngine.h">
-      <Filter>src\MreshEngine</Filter>
+    <ClInclude Include="src\MreshEngine\Renderer\Renderer2D.h">
+      <Filter>src\MreshEngine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\MreshEngine\Window.h">
-      <Filter>src\MreshEngine</Filter>
+    <ClInclude Include="src\MreshEngine\Renderer\RendererAPI.h">
+      <Filter>src\MreshEngine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+    <ClInclude Include="src\MreshEngine\Renderer\Shader.h">
+      <Filter>src\MreshEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MreshEngine\Renderer\Texture.h">
+      <Filter>src\MreshEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MreshEngine\Renderer\VertexArray.h">
+      <Filter>src\MreshEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
@@ -104,6 +167,9 @@
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>src\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hzpch.h">
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\mepch.h">
       <Filter>src</Filter>
@@ -1248,24 +1314,84 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\MreshEngine\Application.cpp">
-      <Filter>src\MreshEngine</Filter>
+    <ClCompile Include="src\MreshEngine\Core\Application.cpp">
+      <Filter>src\MreshEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MreshEngine\Core\Input.cpp">
+      <Filter>src\MreshEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MreshEngine\Core\Layer.cpp">
+      <Filter>src\MreshEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MreshEngine\Core\LayerStack.cpp">
+      <Filter>src\MreshEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MreshEngine\Core\Log.cpp">
+      <Filter>src\MreshEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MreshEngine\Core\Window.cpp">
+      <Filter>src\MreshEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MreshEngine\ImGui\ImGuiBuild.cpp">
+      <Filter>src\MreshEngine\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\MreshEngine\ImGui\ImGuiLayer.cpp">
       <Filter>src\MreshEngine\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\MreshEngine\Layer.cpp">
-      <Filter>src\MreshEngine</Filter>
+    <ClCompile Include="src\MreshEngine\Renderer\Buffer.cpp">
+      <Filter>src\MreshEngine\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\MreshEngine\LayerStack.cpp">
-      <Filter>src\MreshEngine</Filter>
+    <ClCompile Include="src\MreshEngine\Renderer\GraphicsContext.cpp">
+      <Filter>src\MreshEngine\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\MreshEngine\Log.cpp">
-      <Filter>src\MreshEngine</Filter>
+    <ClCompile Include="src\MreshEngine\Renderer\OrthographicCamera.cpp">
+      <Filter>src\MreshEngine\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+    <ClCompile Include="src\MreshEngine\Renderer\OrthographicCameraController.cpp">
+      <Filter>src\MreshEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MreshEngine\Renderer\RenderCommand.cpp">
+      <Filter>src\MreshEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MreshEngine\Renderer\Renderer.cpp">
+      <Filter>src\MreshEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MreshEngine\Renderer\Renderer2D.cpp">
+      <Filter>src\MreshEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MreshEngine\Renderer\RendererAPI.cpp">
+      <Filter>src\MreshEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MreshEngine\Renderer\Shader.cpp">
+      <Filter>src\MreshEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MreshEngine\Renderer\Texture.cpp">
+      <Filter>src\MreshEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MreshEngine\Renderer\VertexArray.cpp">
+      <Filter>src\MreshEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
@@ -1274,8 +1400,14 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\hzpch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="src\mepch.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\stb_image\stb_image.cpp">
+      <Filter>vendor\stb_image</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

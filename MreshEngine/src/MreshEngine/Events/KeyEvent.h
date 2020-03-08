@@ -1,27 +1,27 @@
 #pragma once
 
-#include "Event.h"
-
+#include "MreshEngine/Events/Event.h"
+#include "MreshEngine/Core/Input.h"
 
 namespace MreshEngine
 {
-	class MRESH_API KeyEvent : public Event
+	class KeyEvent : public Event
 	{
 	public:
-		inline int GetKeyCode() const { return m_KeyCode; }
+		inline KeyCode GetKeyCode() const { return m_KeyCode; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
-		KeyEvent(int keycode) :
-			m_KeyCode(keycode) {}
+		KeyEvent(KeyCode keycode)
+			: m_KeyCode(keycode) {}
 
-		int m_KeyCode;
+		KeyCode m_KeyCode;
 	};
 
-	class MRESH_API KeyPressedEvent : public KeyEvent
+	class KeyPressedEvent : public KeyEvent
 	{
 	public:
-		KeyPressedEvent(int keycode, int repeatCount)
+		KeyPressedEvent(KeyCode keycode, int repeatCount)
 			: KeyEvent(keycode), m_RepeatCount(repeatCount) {}
 
 		inline int GetRepeatCount() const { return m_RepeatCount; }
@@ -38,27 +38,10 @@ namespace MreshEngine
 		int m_RepeatCount;
 	};
 
-	class MRESH_API KeyTypedEvent : public KeyEvent
+	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
-		KeyTypedEvent(int keycode)
-			: KeyEvent(keycode) {}
-
-
-		std::string ToString() const override
-		{
-			std::stringstream ss;
-			ss << "KeyTypedEvent: " << m_KeyCode;
-			return ss.str();
-		}
-
-		EVENT_CLASS_TYPE(KeyTyped)
-	};
-
-	class MRESH_API KeyReleasedEvent : public KeyEvent
-	{
-	public:
-		KeyReleasedEvent(int keycode)
+		KeyReleasedEvent(KeyCode keycode)
 			: KeyEvent(keycode) {}
 
 		std::string ToString() const override
@@ -70,5 +53,20 @@ namespace MreshEngine
 
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
-}
 
+	class KeyTypedEvent : public KeyEvent
+	{
+	public:
+		KeyTypedEvent(KeyCode keycode)
+			: KeyEvent(keycode) {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "KeyTypedEvent: " << m_KeyCode;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(KeyTyped)
+	};
+}

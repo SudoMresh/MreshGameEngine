@@ -1,13 +1,17 @@
 workspace "MreshEngine"
-	architecture "x64"
-
+	architecture "x86_64"
 	startproject "Sandbox"
-	
+
 	configurations
 	{
 		"Debug",
 		"Release",
 		"Dist"
+	}
+	
+	flags
+	{
+		"MultiProcessorCompile"
 	}
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
@@ -18,20 +22,25 @@ IncludeDir["GLFW"] = "MreshEngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "MreshEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "MreshEngine/vendor/imgui"
 IncludeDir["glm"] = "MreshEngine/vendor/glm"
+IncludeDir["stb_image"] = "MreshEngine/vendor/stb_image"
 
-include "MreshEngine/vendor/GLFW"
-include "MreshEngine/vendor/Glad"
-include "MreshEngine/vendor/imgui"
+group "Dependencies"
+	include "MreshEngine/vendor/GLFW"
+	include "MreshEngine/vendor/Glad"
+	include "MreshEngine/vendor/imgui"
+
+group ""
 
 project "MreshEngine"
 	location "MreshEngine"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-	
+
 	pchheader "mepch.h"
 	pchsource "MreshEngine/src/mepch.cpp"
 
@@ -39,10 +48,17 @@ project "MreshEngine"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
-	
+
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
+
 	includedirs
 	{
 		"%{prj.name}/src",
@@ -50,53 +66,48 @@ project "MreshEngine"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
-	
-	links
-	{
-		"Glad",
+
+	links 
+	{ 
 		"GLFW",
+		"Glad",
 		"ImGui",
 		"opengl32.lib"
 	}
 
 	filter "system:windows"
-		cppdialect  "C++17"
 		systemversion "latest"
 
 		defines
 		{
-			"ME_PLATFORM_WINDOWS",
 			"ME_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
-		}
-
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"
 		defines "ME_DEBUG"
 		runtime "Debug"
-		symbols "On"
-	
+		symbols "on"
+
 	filter "configurations:Release"
 		defines "ME_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "ME_DIST"
 		runtime "Release"
-		optimize "On"
-	
+		optimize "on"
+
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -106,7 +117,7 @@ project "Sandbox"
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp"
 	}
-	
+
 	includedirs
 	{
 		"MreshEngine/vendor/spdlog/include",
@@ -115,31 +126,25 @@ project "Sandbox"
 		"%{IncludeDir.glm}"
 	}
 
-	links 
+	links
 	{
 		"MreshEngine"
 	}
 
 	filter "system:windows"
-		cppdialect  "C++17"
 		systemversion "latest"
-
-		defines
-		{
-			"ME_PLATFORM_WINDOWS"
-		}
-
+		
 	filter "configurations:Debug"
 		defines "ME_DEBUG"
 		runtime "Debug"
-		symbols "On"
-	
+		symbols "on"
+
 	filter "configurations:Release"
 		defines "ME_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "ME_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"

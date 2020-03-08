@@ -1,18 +1,31 @@
 #pragma once
 
-// For use by Mresh Engine application
+// For use by MreshEngine applications
 
-#include "MreshEngine/Application.h"
-#include "MreshEngine/Layer.h"
-#include "MreshEngine/Log.h"
+#include "MreshEngine/Core/Core.h"
 
-#include "MreshEngine/Input.h"
-#include "MreshEngine/KeyCodes.h"
-#include "MreshEngine/MouseButtonCodes.h"
+#include "MreshEngine/Core/Application.h"
+#include "MreshEngine/Core/Layer.h"
+#include "MreshEngine/Core/Log.h"
+
+#include "MreshEngine/Core/Timestep.h"
+
+#include "MreshEngine/Core/Input.h"
+#include "MreshEngine/Core/KeyCodes.h"
+#include "MreshEngine/Core/MouseCodes.h"
+#include "MreshEngine/Renderer/OrthographicCameraController.h"
 
 #include "MreshEngine/ImGui/ImGuiLayer.h"
 
-// -----Entry Point-----------
-#include "MreshEngine/EntryPoint.h"
-//----------------------------
+// ---Renderer------------------------
+#include "MreshEngine/Renderer/Renderer.h"
+#include "MreshEngine/Renderer/Renderer2D.h"
+#include "MreshEngine/Renderer/RenderCommand.h"
 
+#include "MreshEngine/Renderer/Buffer.h"
+#include "MreshEngine/Renderer/Shader.h"
+#include "MreshEngine/Renderer/Texture.h"
+#include "MreshEngine/Renderer/VertexArray.h"
+
+#include "MreshEngine/Renderer/OrthographicCamera.h"
+// -----------------------------------

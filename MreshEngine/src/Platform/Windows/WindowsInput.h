@@ -1,18 +1,18 @@
 #pragma once
 
-#include "MreshEngine/Input.h"
+#include "MreshEngine/Core/Input.h"
 
-namespace MreshEngine
+namespace MreshEngine 
 {
 	class WindowsInput : public Input
 	{
 	protected:
-		virtual bool IsKeyPressedImpl(int keycode) override;
+		virtual bool IsKeyPressedImpl(KeyCode key) override;
 
-		virtual bool IsMouseButtonmPressedImpl(int button) override;
+		virtual bool IsMouseButtonPressedImpl(MouseCode button) override;
 		virtual std::pair<float, float> GetMousePositionImpl() override;
 		virtual float GetMouseXImpl() override;
 		virtual float GetMouseYImpl() override;
 	};
-}
 
+}

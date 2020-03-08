@@ -8,13 +8,15 @@
 
 #include <string>
 #include <sstream>
+#include <array>
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
 
-#include "MreshEngine/Log.h"
+#include "MreshEngine/Core/Log.h"
 
-#ifdef ME_PLATFORM_WINDOWS
+#include "MreshEngine/Debug/Instrumentor.h"
+
+#ifdef HZ_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif
-

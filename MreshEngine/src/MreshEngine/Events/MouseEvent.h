@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Event.h"
-
+#include "MreshEngine/Events/Event.h"
+#include "MreshEngine/Core/Input.h"
 
 namespace MreshEngine
 {
-	class MRESH_API MouseMovedEvent : public Event
+	class MouseMovedEvent : public Event
 	{
 	public:
 		MouseMovedEvent(float x, float y)
@@ -27,11 +27,11 @@ namespace MreshEngine
 		float m_MouseX, m_MouseY;
 	};
 
-	class MRESH_API MouseScrolledEvent : public Event
+	class MouseScrolledEvent : public Event
 	{
 	public:
-		MouseScrolledEvent(float xOffsetm, float yOffset)
-			: m_XOffset(xOffsetm), m_YOffset(yOffset) {}
+		MouseScrolledEvent(float xOffset, float yOffset)
+			: m_XOffset(xOffset), m_YOffset(yOffset) {}
 
 		inline float GetXOffset() const { return m_XOffset; }
 		inline float GetYOffset() const { return m_YOffset; }
@@ -49,23 +49,23 @@ namespace MreshEngine
 		float m_XOffset, m_YOffset;
 	};
 
-	class MRESH_API MouseButtonEvent : public Event
+	class MouseButtonEvent : public Event
 	{
 	public:
-		inline int GetMouseButton() const { return m_Button; }
+		inline MouseCode GetMouseButton() const { return m_Button; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	protected:
-		MouseButtonEvent(int button)
+		MouseButtonEvent(MouseCode button)
 			: m_Button(button) {}
 
-		int m_Button;
+		MouseCode m_Button;
 	};
 
-	class MRESH_API MouseButtonPressedEvent : public MouseButtonEvent
+	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonPressedEvent(int button)
+		MouseButtonPressedEvent(MouseCode button)
 			: MouseButtonEvent(button) {}
 
 		std::string ToString() const override
@@ -78,10 +78,10 @@ namespace MreshEngine
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
-	class MRESH_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonReleasedEvent(int button)
+		MouseButtonReleasedEvent(MouseCode button)
 			: MouseButtonEvent(button) {}
 
 		std::string ToString() const override
@@ -93,5 +93,5 @@ namespace MreshEngine
 
 		EVENT_CLASS_TYPE(MouseButtonReleased)
 	};
-}
 
+}
