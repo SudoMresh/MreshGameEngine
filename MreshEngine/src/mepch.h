@@ -17,6 +17,6 @@
 
 #include "MreshEngine/Debug/Instrumentor.h"
 
-#ifdef HZ_PLATFORM_WINDOWS
+#ifdef ME_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif
