@@ -18,16 +18,16 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
-IncludeDir["GLFW"] = "MreshEngine/vendor/GLFW/include"
-IncludeDir["Glad"] = "MreshEngine/vendor/Glad/include"
-IncludeDir["ImGui"] = "MreshEngine/vendor/imgui"
-IncludeDir["glm"] = "MreshEngine/vendor/glm"
-IncludeDir["stb_image"] = "MreshEngine/vendor/stb_image"
+IncludeDir["GLFW"] = "MreshEngine/thirdparty/GLFW/include"
+IncludeDir["Glad"] = "MreshEngine/thirdparty/Glad/include"
+IncludeDir["ImGui"] = "MreshEngine/thirdparty/imgui"
+IncludeDir["glm"] = "MreshEngine/thirdparty/glm"
+IncludeDir["stb_image"] = "MreshEngine/thirdparty/stb_image"
 
 group "Dependencies"
-	include "MreshEngine/vendor/GLFW"
-	include "MreshEngine/vendor/Glad"
-	include "MreshEngine/vendor/imgui"
+	include "MreshEngine/thirdparty/GLFW"
+	include "MreshEngine/thirdparty/Glad"
+	include "MreshEngine/thirdparty/imgui"
 
 group ""
 
@@ -48,10 +48,10 @@ project "MreshEngine"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
-		"%{prj.name}/vendor/stb_image/**.h",
-		"%{prj.name}/vendor/stb_image/**.cpp",
-		"%{prj.name}/vendor/glm/glm/**.hpp",
-		"%{prj.name}/vendor/glm/glm/**.inl",
+		"%{prj.name}/thirdparty/stb_image/**.h",
+		"%{prj.name}/thirdparty/stb_image/**.cpp",
+		"%{prj.name}/thirdparty/glm/glm/**.hpp",
+		"%{prj.name}/thirdparty/glm/glm/**.inl",
 	}
 
 	defines
@@ -62,7 +62,7 @@ project "MreshEngine"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include",
+		"%{prj.name}/thirdparty/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
@@ -120,9 +120,9 @@ project "Sandbox"
 
 	includedirs
 	{
-		"MreshEngine/vendor/spdlog/include",
+		"MreshEngine/thirdparty/spdlog/include",
 		"MreshEngine/src",
-		"MreshEngine/vendor",
+		"MreshEngine/thirdparty",
 		"%{IncludeDir.glm}"
 	}
 

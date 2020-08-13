@@ -1,16 +1,16 @@
-[submodule "MreshEngine/vendor/spdlog"]
-	path = MreshEngine/vendor/spdlog
+[submodule "MreshEngine/thirdparty/spdlog"]
+	path = MreshEngine/thirdparty/spdlog
 	url = https://github.com/gabime/spdlog
 	branch = v1.x
-[submodule "MreshEngine/vendor/GLFW"]
-	path = MreshEngine/vendor/GLFW
+[submodule "MreshEngine/thirdparty/GLFW"]
+	path = MreshEngine/thirdparty/GLFW
 	url = https://github.com/TheCherno/glfw
 	branch = master
-[submodule "MreshEngine/vendor/imgui"]
-	path = MreshEngine/vendor/imgui
+[submodule "MreshEngine/thirdparty/imgui"]
+	path = MreshEngine/thirdparty/imgui
 	url = https://github.com/TheCherno/imgui
 	branch = docking
-[submodule "MreshEngine/vendor/glm"]
-	path = MreshEngine/vendor/glm
+[submodule "MreshEngine/thirdparty/glm"]
+	path = MreshEngine/thirdparty/glm
 	url = https://github.com/g-truc/glm
 	branch = master
