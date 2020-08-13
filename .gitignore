@@ -5,6 +5,7 @@ bin-int/
 
 # MreshEngine files
 *.log
+*.json
 
 # Visual Studio files and folder
 .vs/
