@@ -1,7 +1,6 @@
 # Binaries
-**/bin/
-!ThirdParty/bin/premake/
-bin-int/
+**/Bin/
+Bin-int/
 
 # MreshEngine files
 *.log
