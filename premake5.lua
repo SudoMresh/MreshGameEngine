@@ -18,40 +18,40 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
-IncludeDir["GLFW"] = "MreshEngine/thirdparty/GLFW/include"
-IncludeDir["Glad"] = "MreshEngine/thirdparty/Glad/include"
-IncludeDir["ImGui"] = "MreshEngine/thirdparty/imgui"
-IncludeDir["glm"] = "MreshEngine/thirdparty/glm"
-IncludeDir["stb_image"] = "MreshEngine/thirdparty/stb_image"
+IncludeDir["GLFW"] = "Engine/ThirdParty/GLFW/include"
+IncludeDir["Glad"] = "Engine/ThirdParty/Glad/include"
+IncludeDir["ImGui"] = "Engine/ThirdParty/imgui"
+IncludeDir["glm"] = "Engine/ThirdParty/glm"
+IncludeDir["stb_image"] = "Engine/ThirdParty/stb_image"
 
 group "Dependencies"
-	include "MreshEngine/thirdparty/GLFW"
-	include "MreshEngine/thirdparty/Glad"
-	include "MreshEngine/thirdparty/imgui"
+	include "Engine/ThirdParty/GLFW"
+	include "Engine/ThirdParty/Glad"
+	include "Engine/ThirdParty/imgui"
 
 group ""
 
 project "MreshEngine"
-	location "MreshEngine"
+	location "Engine"
 	kind "StaticLib"
 	language "C++"
 	cppdialect "C++17"
 	staticruntime "on"
 
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	targetdir ("Bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("Bin-int/" .. outputdir .. "/%{prj.name}")
 
 	pchheader "mepch.h"
-	pchsource "MreshEngine/src/mepch.cpp"
+	pchsource "Engine/Source/mepch.cpp"
 
 	files
 	{
-		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp",
-		"%{prj.name}/thirdparty/stb_image/**.h",
-		"%{prj.name}/thirdparty/stb_image/**.cpp",
-		"%{prj.name}/thirdparty/glm/glm/**.hpp",
-		"%{prj.name}/thirdparty/glm/glm/**.inl",
+		"Engine/Source/**.h",
+		"Engine/Source/**.cpp",
+		"Engine/ThirdParty/stb_image/**.h",
+		"Engine/ThirdParty/stb_image/**.cpp",
+		"Engine/ThirdParty/glm/glm/**.hpp",
+		"Engine/ThirdParty/glm/glm/**.inl",
 	}
 
 	defines
@@ -61,8 +61,8 @@ project "MreshEngine"
 
 	includedirs
 	{
-		"%{prj.name}/src",
-		"%{prj.name}/thirdparty/spdlog/include",
+		"Engine/Source",
+		"Engine/ThirdParty/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
@@ -109,20 +109,20 @@ project "Sandbox"
 	cppdialect "C++17"
 	staticruntime "on"
 
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	targetdir ("Bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("Bin-int/" .. outputdir .. "/%{prj.name}")
 
 	files
 	{
-		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/Source/**.h",
+		"%{prj.name}/Source/**.cpp"
 	}
 
 	includedirs
 	{
-		"MreshEngine/thirdparty/spdlog/include",
-		"MreshEngine/src",
-		"MreshEngine/thirdparty",
+		"Engine/ThirdParty/spdlog/include",
+		"Engine/Source",
+		"Engine/ThirdParty",
 		"%{IncludeDir.glm}"
 	}
 
