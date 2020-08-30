@@ -18,7 +18,7 @@ namespace MreshEngine
 	class Application
 	{
 	public:
-		Application();
+		Application(const std::string& name = "Mresh Application");
 		virtual ~Application();
 
 		void OnEvent(Event& e);
@@ -27,6 +27,8 @@ namespace MreshEngine
 		void PushOverlay(Layer* layer);
 
 		inline Window& GetWindow() { return *m_Window; }
+
+		void Close();
 
 		inline static Application& Get() { return *s_Instance; }
 

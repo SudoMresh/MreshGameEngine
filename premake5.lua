@@ -1,6 +1,6 @@
 workspace "MreshEngine"
 	architecture "x86_64"
-	startproject "Sandbox"
+	startproject "MreshEngine-Editor"
 
 	configurations
 	{
@@ -101,6 +101,55 @@ project "MreshEngine"
 		defines "ME_DIST"
 		runtime "Release"
 		optimize "on"
+
+
+project "MreshEngine-Editor"
+	location "Editor"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
+	targetdir ("Bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("Bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"Editor/Source/**.h",
+		"Editor/Source/**.cpp"
+	}
+
+	includedirs
+	{
+		"Engine/ThirdParty/spdlog/include",
+		"Engine/Source",
+		"Engine/ThirdParty",
+		"%{IncludeDir.glm}"
+	}
+
+	links
+	{
+		"MreshEngine"
+	}
+
+	filter "system:windows"
+		systemversion "latest"
+		
+	filter "configurations:Debug"
+		defines "ME_DEBUG"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		defines "ME_RELEASE"
+		runtime "Release"
+		optimize "on"
+
+	filter "configurations:Dist"
+		defines "ME_DIST"
+		runtime "Release"
+		optimize "on"
+
 
 project "Sandbox"
 	location "Sandbox"

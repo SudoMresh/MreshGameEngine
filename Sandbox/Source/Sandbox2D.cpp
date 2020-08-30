@@ -14,6 +14,13 @@ void Sandbox2D::OnAttach()
 	ME_PROFILE_FUNCTION();
 
 	m_CheckerboardTexture = MreshEngine::Texture2D::Create("assets/textures/Checkerboard.png");
+	m_SpriteSheet = MreshEngine::Texture2D::Create("assets/game/textures/RPGpack_sheet_2X.png");
+
+	m_TextureStairs = MreshEngine::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 7, 6 }, { 128, 128 });
+	m_TextureBarrel = MreshEngine::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 8, 2 }, { 128, 128 });
+	m_TextureTree = MreshEngine::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 2, 1 }, { 128 , 128 }, { 1, 2 });
+
+	m_CameraController.SetZoomLevel(5.0f);
 }
 
 void Sandbox2D::OnDetach()
@@ -42,22 +49,28 @@ void Sandbox2D::OnUpdate(MreshEngine::Timestep ts)
 		rotation += ts * 50.0f;
 
 		ME_PROFILE_SCOPE("Renderer Draw");
-		MreshEngine::Renderer2D::BeginScene(m_CameraController.GetCamera());
+		/*MreshEngine::Renderer2D::BeginScene(m_CameraController.GetCamera());
 		MreshEngine::Renderer2D::DrawRotatedQuad( { 1.0f, 0.0f }, { 0.8f, 0.8f }, -45.0f, { 0.8f, 0.2f, 0.3f, 1.0f } );
 		MreshEngine::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.3f, 0.8f, 1.0f });
 		MreshEngine::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
 		MreshEngine::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 20.0f, 20.0f }, m_CheckerboardTexture, 10.f);
 		MreshEngine::Renderer2D::DrawRotatedQuad({ -2.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, rotation, m_CheckerboardTexture, 20.f);
 
-		for (float y = -5.0f; y < 5.0f; y += 0.1f)
+		for (float y = -5.0f; y < 5.0f; y += 0.5f)
 		{
-			for (float x = -5.0f; x < 5.0f; x += 0.1f)
+			for (float x = -5.0f; x < 5.0f; x += 0.5f)
 			{
 				glm::vec4 color = { (x + 5.0f) / 10.0f, 0.4f, (y + 5.0f) / 10.0f, 0.7f };
 				MreshEngine::Renderer2D::DrawQuad({ x, y }, { 0.45f, 0.45f }, color);
 			}
 		}
 
+		MreshEngine::Renderer2D::EndScene();*/
+
+		MreshEngine::Renderer2D::BeginScene(m_CameraController.GetCamera());
+		MreshEngine::Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, m_TextureStairs);
+		MreshEngine::Renderer2D::DrawQuad({ 1.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, m_TextureBarrel);
+		MreshEngine::Renderer2D::DrawQuad({ -1.0f, 0.0f, 0.0f }, { 1.0f, 2.0f }, m_TextureTree);
 		MreshEngine::Renderer2D::EndScene();
 	}
 }

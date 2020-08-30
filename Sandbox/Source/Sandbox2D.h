@@ -23,6 +23,10 @@ private:
 	MreshEngine::Ref<MreshEngine::Shader> m_FlatColorShader;
 
 	MreshEngine::Ref<MreshEngine::Texture2D> m_CheckerboardTexture;
+	MreshEngine::Ref<MreshEngine::Texture2D> m_SpriteSheet;
+	MreshEngine::Ref<MreshEngine::SubTexture2D> m_TextureStairs;
+	MreshEngine::Ref<MreshEngine::SubTexture2D> m_TextureBarrel;
+	MreshEngine::Ref<MreshEngine::SubTexture2D> m_TextureTree;
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 };

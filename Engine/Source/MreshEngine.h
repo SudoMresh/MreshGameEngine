@@ -23,7 +23,9 @@
 
 #include "MreshEngine/Renderer/Buffer.h"
 #include "MreshEngine/Renderer/Shader.h"
+#include "MreshEngine/Renderer/Framebuffer.h"
 #include "MreshEngine/Renderer/Texture.h"
+#include "MreshEngine/Renderer/SubTexture2D.h"
 #include "MreshEngine/Renderer/VertexArray.h"
 // -----------------------------------
 
