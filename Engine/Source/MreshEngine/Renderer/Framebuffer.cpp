@@ -6,7 +6,7 @@
 
 namespace MreshEngine
 {
-	Ref<Framebuffer> Framebuffer::Create(const FramebudderSpecification& specifiacation)
+	Ref<Framebuffer> Framebuffer::Create(const FramebufferSpecification& specifiacation)
 	{
 		switch (Renderer::GetAPI())
 		{

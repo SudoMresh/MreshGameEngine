@@ -4,7 +4,7 @@
 
 namespace MreshEngine
 {
-	struct FramebudderSpecification
+	struct FramebufferSpecification
 	{
 		uint32_t Width, Height;
 
@@ -16,6 +16,8 @@ namespace MreshEngine
 	class Framebuffer
 	{
 	public:
+		virtual ~Framebuffer() = default;
+
 		virtual void Bind() = 0;
 		virtual void Unbind() = 0;
 
@@ -23,11 +25,9 @@ namespace MreshEngine
 
 		virtual uint32_t GetColorAttachmentRendererID() const = 0;
 
-		virtual const FramebudderSpecification& GetSpecification() const = 0;
+		virtual const FramebufferSpecification& GetSpecification() const = 0;
 
-		static Ref<Framebuffer> Create(const FramebudderSpecification& specifiacation);
-
-	private:
+		static Ref<Framebuffer> Create(const FramebufferSpecification& specifiacation);
 
 	};
 }

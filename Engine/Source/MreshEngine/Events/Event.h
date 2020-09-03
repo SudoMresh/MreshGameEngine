@@ -38,6 +38,8 @@ namespace MreshEngine
 	class Event
 	{
 	public:
+		virtual ~Event() = default;
+
 		bool Handled = false;
 
 		virtual EventType GetEventType() const = 0;
@@ -58,6 +60,8 @@ namespace MreshEngine
 			: m_Event(event)
 		{
 		}
+
+		virtual ~EventDispatcher() = default;
 		
 		// F will be deduced by the compiler
 		template<typename T, typename F>

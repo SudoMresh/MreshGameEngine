@@ -33,3 +33,10 @@
 #include "MreshEngine/Renderer/OrthographicCamera.h"
 #include "MreshEngine/Renderer/OrthographicCameraController.h"
 // -----------------------------------
+
+// ---Scene---------------------------
+#include "MreshEngine/Scene/Scene.h"
+#include "MreshEngine/Scene/Components.h"
+#include "MreshEngine/Scene/Entity.h"
+// -----------------------------------
+

@@ -5,9 +5,10 @@
 
 namespace MreshEngine
 {
+	// TODO: Need to get rid off hardcoded code and use GD props
 	static const uint32_t s_MaxFramebufferSize = 8192;
 
-	OpenGLFramebuffer::OpenGLFramebuffer(const FramebudderSpecification& specification)
+	OpenGLFramebuffer::OpenGLFramebuffer(const FramebufferSpecification& specification)
 		: m_Specification(specification)
 	{
 		Invalidate();

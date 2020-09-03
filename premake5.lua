@@ -23,6 +23,7 @@ IncludeDir["Glad"] = "Engine/ThirdParty/Glad/include"
 IncludeDir["ImGui"] = "Engine/ThirdParty/imgui"
 IncludeDir["glm"] = "Engine/ThirdParty/glm"
 IncludeDir["stb_image"] = "Engine/ThirdParty/stb_image"
+IncludeDir["entt"] = "Engine/ThirdParty/entt/include"
 
 group "Dependencies"
 	include "Engine/ThirdParty/GLFW"
@@ -67,7 +68,8 @@ project "MreshEngine"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.entt}"
 	}
 
 	links 
@@ -124,7 +126,8 @@ project "MreshEngine-Editor"
 		"Engine/ThirdParty/spdlog/include",
 		"Engine/Source",
 		"Engine/ThirdParty",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links
@@ -172,7 +175,8 @@ project "Sandbox"
 		"Engine/ThirdParty/spdlog/include",
 		"Engine/Source",
 		"Engine/ThirdParty",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links

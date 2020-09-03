@@ -7,7 +7,7 @@ namespace MreshEngine
 	class OpenGLFramebuffer : public Framebuffer
 	{
 	public:
-		OpenGLFramebuffer(const FramebudderSpecification& specification);
+		OpenGLFramebuffer(const FramebufferSpecification& specification);
 		virtual ~OpenGLFramebuffer();
 
 		void Invalidate();
@@ -19,12 +19,12 @@ namespace MreshEngine
 
 		virtual uint32_t GetColorAttachmentRendererID() const override { return m_ColorAttachment; }
 
-		virtual const FramebudderSpecification& GetSpecification() const override { return m_Specification; }
+		virtual const FramebufferSpecification& GetSpecification() const override { return m_Specification; }
 
 	private:
 		uint32_t m_RendererID;
 		uint32_t m_ColorAttachment, m_DepthAttachment;
-		FramebudderSpecification m_Specification;
+		FramebufferSpecification m_Specification;
 	};
 
 }

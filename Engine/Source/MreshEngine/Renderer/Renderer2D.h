@@ -5,6 +5,8 @@
 #include "MreshEngine/Renderer/Texture.h"
 #include "MreshEngine/Renderer/SubTexture2D.h"
 
+#include "MreshEngine/Renderer/Camera.h"
+
 namespace MreshEngine
 {
 	class Renderer2D
@@ -14,6 +16,7 @@ namespace MreshEngine
 		static void Shutdown();
 
 		static void BeginScene(const OrthographicCamera& camera);
+		static void BeginScene(const Camera& camera, const glm::mat4& transform);
 		static void EndScene();
 
 		static void Flush();
@@ -28,6 +31,10 @@ namespace MreshEngine
 		static void DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<SubTexture2D>& subtexture, float tilingFactor = 1.0f,
 			const glm::vec4& tintColor = glm::vec4(1.f));
 		static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<SubTexture2D>& subtexture, float tilingFactor = 1.0f,
+			const glm::vec4& tintColor = glm::vec4(1.f));
+
+		static void DrawQuad(const glm::mat4& transform, const glm::vec4& color);
+		static void DrawQuad(const glm::mat4& transform, const glm::vec2* textureCoords, const Ref<Texture2D>& texture, float tilingFactor = 1.0f,
 			const glm::vec4& tintColor = glm::vec4(1.f));
 
 		static void DrawRotatedQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const glm::vec4& color);
@@ -56,9 +63,6 @@ namespace MreshEngine
 
 	private:
 		static void FlushAndReset();
-
-		static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec2* textureCoords, const Ref<Texture2D>& texture,
-			const glm::vec4& color = { 1.0f, 1.0f, 1.0f, 1.0f }, float tilingFactor = 0.0f, float rotation = 0.0f);
 	};
 
 }

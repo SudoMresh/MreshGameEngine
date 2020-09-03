@@ -17,7 +17,7 @@ int main(int argc, char** argv)
 	app->Run();
 	ME_PROFILE_END_SESSION();
 
-	ME_PROFILE_BEGIN_SESSION("Startup", "MreshEngineProfile-Shutdown.json");
+	ME_PROFILE_BEGIN_SESSION("Shutdown", "MreshEngineProfile-Shutdown.json");
 	delete app;
 	ME_PROFILE_END_SESSION();
 }
