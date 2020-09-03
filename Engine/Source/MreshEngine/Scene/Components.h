@@ -3,7 +3,8 @@
 #include <glm/glm.hpp>
 
 #include "SceneCamera.h"
-
+#include "ScriptableEntity.h"
+#include "MreshEngine/Core/Timestep.h"
 
 namespace MreshEngine
 {
@@ -49,6 +50,21 @@ namespace MreshEngine
 
 		CameraComponent() = default;
 		CameraComponent(const CameraComponent&) = default;
+	};
+
+	struct NativeScriptComponent
+	{
+		ScriptableEntity* Instance = nullptr;
+
+		ScriptableEntity*(*InstantiateScript)();
+		void (*DestroyScript)(NativeScriptComponent*);
+
+		template<class T>
+		void Bind()
+		{
+			InstantiateScript = []() { return static_cast<ScriptableEntity*>(new T()); };
+			DestroyScript = [](NativeScriptComponent* nsc) { delete nsc->Instance; nsc->Instance = nullptr; };
+		}
 	};
 }
 

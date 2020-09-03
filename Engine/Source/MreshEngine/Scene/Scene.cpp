@@ -29,6 +29,21 @@ namespace MreshEngine
 
 	void Scene::OnUpdate(Timestep ts)
 	{
+		// Update scripts
+		m_Registry.view<NativeScriptComponent>().each([=](auto entity, auto& nsc)
+		{
+			// Need to move Scene::OnPlay
+			if (!nsc.Instance)
+			{
+				nsc.Instance = nsc.InstantiateScript();
+				nsc.Instance->m_Entity = Entity{ entity, this };
+				nsc.Instance->OnCreate();
+			}
+
+			nsc.Instance->OnUpdate(ts);
+		});
+
+
 		// Render 2D staff
 		Camera* mainCamera = nullptr;
 		glm::mat4* cameraTransform = nullptr;
@@ -36,7 +51,7 @@ namespace MreshEngine
 		auto view = m_Registry.view<CameraComponent, TransformComponent>();
 		for (auto entity : view)
 		{
-			auto& [transform, camera] = view.get<TransformComponent, CameraComponent>(entity);
+			auto [transform, camera] = view.get<TransformComponent, CameraComponent>(entity);
 
 			if (camera.Primary)
 			{
@@ -53,7 +68,7 @@ namespace MreshEngine
 			auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>);
 			for (auto entity : group)
 			{
-				auto& [transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
+				auto [transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
 
 				Renderer2D::DrawQuad(transform, sprite.Color);
 			}

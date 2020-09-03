@@ -38,5 +38,6 @@
 #include "MreshEngine/Scene/Scene.h"
 #include "MreshEngine/Scene/Components.h"
 #include "MreshEngine/Scene/Entity.h"
+#include "MreshEngine/Scene/ScriptableEntity.h"
 // -----------------------------------
 
