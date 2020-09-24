@@ -204,11 +204,11 @@ namespace MreshEngine
 		}
 
 		auto& camera = m_SecondCameraEntity.GetComponent<CameraComponent>().Camera;
-		float orthoSize = camera.GetOrthofraphicSize();
+		float orthoSize = camera.GetOrthographicSize();
 
 		if (ImGui::DragFloat("Second Camera Ortho Size", &orthoSize))
 		{
-			camera.SetOrthofraphicSize(orthoSize);
+			camera.SetOrthographicSize(orthoSize);
 		}
 
 		ImGui::End();
