@@ -68,39 +68,34 @@ namespace MreshEngine
 
 	void SceneHierarchyPanel::DrawComponents(Entity entity)
 	{
-		if (entity.HasComponent<TagComponent>())
-		{
-			auto& tag = entity.GetComponent<TagComponent>().Tag;
-
-			char buffer[256];
-			memset(buffer, 0, sizeof(buffer));
-			strcpy_s(buffer, sizeof(buffer), tag.c_str());
-
-			if (ImGui::InputText("Tag", buffer, sizeof(buffer)))
+		DrawUIComponent<TagComponent>(entity, "Tag", [&entity]()
 			{
-				tag = std::string(buffer);
-			}
-		}
+				auto& tag = entity.GetComponent<TagComponent>().Tag;
 
-		if (entity.HasComponent<TransformComponent>())
-		{
-			if (ImGui::TreeNodeEx((void*)typeid(TransformComponent).hash_code(), ImGuiTreeNodeFlags_DefaultOpen, "Transform"))
+				char buffer[256];
+				memset(buffer, 0, sizeof(buffer));
+				strcpy_s(buffer, sizeof(buffer), tag.c_str());
+
+				if (ImGui::InputText("Tag", buffer, sizeof(buffer)))
+				{
+					tag = std::string(buffer);
+				}
+			}, false);
+
+		DrawUIComponent<TransformComponent>(entity, "Transform", [&entity]()
 			{
 				auto& transform = entity.GetComponent<TransformComponent>().Transform;
 				ImGui::DragFloat3("Position", glm::value_ptr(transform[3]), 0.1f);
 				ImGui::TreePop();
-			}
-		}
+			});
 
-		if (entity.HasComponent<CameraComponent>())
-		{
-			if (ImGui::TreeNodeEx((void*)typeid(CameraComponent).hash_code(), ImGuiTreeNodeFlags_DefaultOpen, "Camera"))
+		DrawUIComponent<CameraComponent>(entity, "Camera", [&entity]()
 			{
 				auto& cameraComponent = entity.GetComponent<CameraComponent>();
 				auto& camera = cameraComponent.Camera;
 
 				ImGui::Checkbox("Primary", &cameraComponent.Primary);
-				
+
 				const char* projectionTypeString[] = { "Perspective", "Orthographic" };
 				const char* currentProjectionTypeString = projectionTypeString[(int)camera.GetProjectionType()];
 
@@ -144,7 +139,7 @@ namespace MreshEngine
 				else if (camera.GetProjectionType() == SceneCamera::ProjectionType::Orthographic)
 				{
 					float orthoSize = camera.GetOrthographicSize();
-					
+
 					if (ImGui::DragFloat("Size", &orthoSize))
 						camera.SetOrthographicSize(orthoSize);
 
@@ -162,8 +157,15 @@ namespace MreshEngine
 				}
 
 				ImGui::TreePop();
-			}
-		}
+			});
+
+		DrawUIComponent<SpriteRendererComponent>(entity, "Sprite Renderer", [&entity]()
+			{
+				auto& src = entity.GetComponent<SpriteRendererComponent>();
+				ImGui::ColorEdit4("Color", glm::value_ptr(src.Color));
+
+				ImGui::TreePop();
+			});
 	}
 
 }
