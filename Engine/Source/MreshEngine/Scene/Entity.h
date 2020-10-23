@@ -19,7 +19,9 @@ namespace MreshEngine
 		{
 			ME_CORE_ASSERT(!HasComponent<T>(), "Entity has alread component!");
 
-			return m_Scene->m_Registry.emplace<T>(m_EntityHandle, std::forward<Args>(args)...);
+			T& component = m_Scene->m_Registry.emplace<T>(m_EntityHandle, std::forward<Args>(args)...);
+			m_Scene->OnComponentAdded<T>(*this, component);
+			return component;
 		}
 
 		template<class T>
@@ -32,7 +34,7 @@ namespace MreshEngine
 		template<class T>
 		void RemoveComponent()
 		{
-			ME_CORE_ASSERT(!HasComponent<T>(), "Entity doesn't have component!");
+			ME_CORE_ASSERT(HasComponent<T>(), "Entity doesn't have component!");
 			m_Scene->m_Registry.remove<T>(m_EntityHandle);
 		}
 
@@ -44,6 +46,7 @@ namespace MreshEngine
 
 		operator bool() const { return m_EntityHandle != entt::null; }
 		operator uint32_t() const { return (uint32_t)m_EntityHandle; }
+		operator entt::entity() const { return m_EntityHandle; }
 
 		bool operator==(const Entity& other) const 
 		{
