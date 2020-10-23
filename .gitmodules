@@ -16,3 +16,6 @@
 	branch = master
 [submodule "MreshEngine/thirdparty/GLFW"]
 	url = Engine/ThirdParty/GLFW
+[submodule "Engine/ThirdParty/yaml-cpp"]
+	path = Engine/ThirdParty/yaml-cpp
+	url = https://github.com/thecherno/yaml-cpp

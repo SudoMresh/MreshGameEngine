@@ -31,12 +31,14 @@ IncludeDir["ImGui"] = "%{wks.location}/Engine/ThirdParty/imgui"
 IncludeDir["glm"] = "%{wks.location}/Engine/ThirdParty/glm"
 IncludeDir["stb_image"] = "%{wks.location}/Engine/ThirdParty/stb_image"
 IncludeDir["entt"] = "%{wks.location}/Engine/ThirdParty/entt/include"
+IncludeDir["yaml_cpp"] = "%{wks.location}/Engine/ThirdParty/yaml-cpp/include"
 
 group "Dependencies"
 	include "ThirdParty/premake"
 	include "Engine/ThirdParty/GLFW"
 	include "Engine/ThirdParty/Glad"
 	include "Engine/ThirdParty/imgui"
+	include "Engine/ThirdParty/yaml-cpp"
 
 group ""
 
