@@ -6,6 +6,8 @@
 
 #include "MreshEngine/Scene/SceneSerializer.h"
 
+#include "MreshEngine/Utils/PlatformUtils.h"
+
 
 namespace MreshEngine
 {
@@ -175,17 +177,14 @@ namespace MreshEngine
 				// which we can't undo at the moment without finer window depth/z control.
 				//ImGui::MenuItem("Fullscreen", NULL, &opt_fullscreen_persistant);
 
-				if (ImGui::MenuItem("Serialize"))
-				{
-					SceneSerializer serializer(m_ActiveScene);
-					serializer.Serialize("assets/scenes/Example.mresh");
-				}
+				if (ImGui::MenuItem("New", "Ctr+N"))
+					NewScene();
 
-				if (ImGui::MenuItem("Deserialize"))
-				{
-					SceneSerializer serializer(m_ActiveScene);
-					serializer.Deserialize("assets/scenes/Example.mresh");
-				}
+				if (ImGui::MenuItem("Open...", "Ctr+O"))
+					OpenScene();
+
+				if (ImGui::MenuItem("Save As...", "Ctr+Shift+S"))
+					SaveSceneAs();
 
 				if (ImGui::MenuItem("Exit")) Application::Get().Close();
 				
@@ -228,5 +227,76 @@ namespace MreshEngine
 	void EditorLayer::OnEvent(Event& e)
 	{
 		m_CameraController.OnEvent(e);
+
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<KeyPressedEvent>(ME_BIND_EVENT_FN(EditorLayer::OnKeyPressed));
 	}
+
+	bool EditorLayer::OnKeyPressed(KeyPressedEvent& event)
+	{
+		if (event.GetRepeatCount() > 0)
+			return false;
+
+		bool controlPressed = Input::IsKeyPressed(Key::LeftControl) || Input::IsKeyPressed(Key::RightControl);
+		bool shiftPressed = Input::IsKeyPressed(Key::LeftShift) || Input::IsKeyPressed(Key::RightShift);
+
+		switch (event.GetKeyCode())
+		{
+			case Key::N:
+			{
+				if (controlPressed)
+					NewScene();
+
+				break;
+			}
+			case Key::O:
+			{
+				if (controlPressed)
+					OpenScene();
+
+				break;
+			}
+			case Key::S:
+			{
+				if (controlPressed && shiftPressed)
+					SaveSceneAs();
+
+				break;
+			}
+		}
+	}
+
+
+	void EditorLayer::NewScene()
+	{
+		m_ActiveScene = CreateRef<Scene>();
+		m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+	}
+
+	void EditorLayer::OpenScene()
+	{
+		std::string filePath = FileDialogs::OpenFile("Mresh Scene (*.mresh)\0*.mresh\0");
+
+		if (!filePath.empty())
+		{
+			NewScene();
+
+			SceneSerializer serializer(m_ActiveScene);
+			serializer.Deserialize(filePath);
+		}
+	}
+
+	void EditorLayer::SaveSceneAs()
+	{
+		std::string filePath = FileDialogs::SaveFile("Mresh Scene (*.mresh)\0*.mresh\0");
+
+		if (!filePath.empty())
+		{
+			SceneSerializer serializer(m_ActiveScene);
+			serializer.Deserialize(filePath);
+		}
+	}
+
+
 }

@@ -20,6 +20,13 @@ namespace MreshEngine
 		void OnEvent(Event& e) override;
 
 	private:
+		bool OnKeyPressed(KeyPressedEvent& event);
+
+		void NewScene();
+		void OpenScene();
+		void SaveSceneAs();
+
+	private:
 		OrthographicCameraController m_CameraController;
 
 		// Temp
