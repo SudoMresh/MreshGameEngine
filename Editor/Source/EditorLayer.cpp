@@ -264,6 +264,8 @@ namespace MreshEngine
 				break;
 			}
 		}
+
+		return true;
 	}
 
 
@@ -297,6 +299,4 @@ namespace MreshEngine
 			serializer.Deserialize(filePath);
 		}
 	}
-
-
 }
