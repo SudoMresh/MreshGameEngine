@@ -19,3 +19,6 @@
 [submodule "Engine/ThirdParty/yaml-cpp"]
 	path = Engine/ThirdParty/yaml-cpp
 	url = https://github.com/thecherno/yaml-cpp
+[submodule "Engine/ThirdParty/ImGuizmo"]
+	path = Engine/ThirdParty/ImGuizmo
+	url = https://github.com/thecherno/imguizmo

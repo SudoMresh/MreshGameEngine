@@ -174,7 +174,6 @@ namespace MreshEngine
 
 		std::ofstream fout(filepath);
 		fout << out.c_str();
-		fout.close();
 	}
 
 	void SceneSerializer::SerializeRuntime(const std::string& filepath)
@@ -185,11 +184,16 @@ namespace MreshEngine
 
 	bool SceneSerializer::Deserialize(const std::string& filepath)
 	{
-		std::ifstream stream(filepath);
-		std::stringstream strStream;
-		strStream << stream.rdbuf();
-
-		YAML::Node data = YAML::Load(strStream.str());
+		YAML::Node data;
+		
+		try
+		{
+			data = YAML::LoadFile(filepath);
+		}
+		catch (YAML::ParserException e)
+		{
+			return false;
+		}
 		
 		if (!data["Scene"])
 			return false;

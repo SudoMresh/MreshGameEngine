@@ -19,7 +19,8 @@ project "MreshEngine-Editor"
 		"%{wks.location}/Engine/Source",
 		"%{wks.location}/Engine/ThirdParty",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.entt}"
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.ImGuizmo}"
 	}
 
 	links

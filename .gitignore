@@ -12,3 +12,10 @@ Bin-int/
 **.vcxproj
 **.vcxproj.filters
 **.vcxproj.user
+
+# Xcode files and folders
+.DS_Store
+ThirdParty/.DS_Store
+ThirdPart/premake/.DS_Store
+**.xcodeproj
+**.xcworkspace
