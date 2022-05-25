@@ -6,6 +6,7 @@
 #include "MreshEngine/Renderer/SubTexture2D.h"
 
 #include "MreshEngine/Renderer/Camera.h"
+#include "MreshEngine/Renderer/EditorCamera.h"
 
 namespace MreshEngine
 {
@@ -16,6 +17,7 @@ namespace MreshEngine
 		static void Shutdown();
 
 		static void BeginScene(const OrthographicCamera& camera);
+		static void BeginScene(const EditorCamera& camera);
 		static void BeginScene(const Camera& camera, const glm::mat4& transform);
 		static void EndScene();
 
@@ -63,6 +65,7 @@ namespace MreshEngine
 
 	private:
 		static void FlushAndReset();
+		static void StartBatch();
 	};
 
 }
