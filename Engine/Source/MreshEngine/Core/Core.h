@@ -18,13 +18,8 @@
 	#define ME_DEBUGBREAK()
 #endif
 
-#ifdef ME_ENABLE_ASSERTS
-	#define ME_ASSERT(x, ...) { if(!(x)) { ME_ERROR("Assertion Failed: {0}", __VA_ARGS__); ME_DEBUGBREAK(); } }
-	#define ME_CORE_ASSERT(x, ...) { if(!(x)) { ME_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); ME_DEBUGBREAK(); } }
-#else
-	#define ME_ASSERT(x, ...)
-	#define ME_CORE_ASSERT(x, ...)
-#endif
+#define ME_EXPAND_MACRO(x) x
+#define ME_STRINGIFY_MACRO(x) #x
 
 #define BIT(x) (1 << x)
 
@@ -49,3 +44,6 @@ namespace MreshEngine
 	}
 
 }
+
+#include "MreshEngine/Core/Log.h"
+#include "MreshEngine/Core/Assert.h"
