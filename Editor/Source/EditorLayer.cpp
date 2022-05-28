@@ -26,6 +26,7 @@ namespace MreshEngine
 		m_CheckerboardTexture = Texture2D::Create("assets/textures/Checkerboard.png");
 
 		FramebufferSpecification fbSpecification;
+		fbSpecification.Attachments = { FramebufferTextureFormat::RGBA8, FramebufferTextureFormat::RGBA8, FramebufferTextureFormat::Depth };
 		fbSpecification.Width = 1280;
 		fbSpecification.Height = 720;
 
