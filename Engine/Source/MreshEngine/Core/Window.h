@@ -2,7 +2,7 @@
 
 #include "mepch.h"
 
-#include "MreshEngine/Core/Core.h"
+#include "MreshEngine/Core/Base.h"
 #include "MreshEngine/Events/Event.h"
 
 namespace MreshEngine

@@ -7,7 +7,8 @@
 class Sandbox : public MreshEngine::Application
 {
 public:
-	Sandbox()
+	Sandbox(MreshEngine::ApplicationCommandLineArgs args)
+		: Application("Sandbox", args)
 	{
 		//PushLayer(new Sandbox3D());
 		PushLayer(new Sandbox2D());
@@ -18,7 +19,7 @@ public:
 	}
 };
 
-MreshEngine::Application* MreshEngine::CreateApplication()
+MreshEngine::Application* MreshEngine::CreateApplication(ApplicationCommandLineArgs args)
 {
-	return new Sandbox();
+	return new Sandbox(args);
 }

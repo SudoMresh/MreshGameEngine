@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MreshEngine/Core/Core.h"
+#include "MreshEngine/Core/Base.h"
 #include "MreshEngine/Core/Timestep.h"
 #include "MreshEngine/Events/Event.h"
 

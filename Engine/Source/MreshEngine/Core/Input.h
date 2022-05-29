@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MreshEngine/Core/Core.h"
+#include "MreshEngine/Core/Base.h"
 #include "MreshEngine/Core/KeyCodes.h"
 #include "MreshEngine/Core/MouseCodes.h"
 

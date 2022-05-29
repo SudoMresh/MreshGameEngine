@@ -2,11 +2,12 @@
 
 // For use by MreshEngine applications
 
-#include "MreshEngine/Core/Core.h"
+#include "MreshEngine/Core/Base.h"
 
 #include "MreshEngine/Core/Application.h"
 #include "MreshEngine/Core/Layer.h"
 #include "MreshEngine/Core/Log.h"
+#include "MreshEngine/Core/Assert.h"
 
 #include "MreshEngine/Core/Timestep.h"
 

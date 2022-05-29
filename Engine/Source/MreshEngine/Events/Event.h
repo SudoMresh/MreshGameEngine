@@ -1,7 +1,7 @@
 #pragma once
 #include "mepch.h"
 
-#include "MreshEngine/Core/Core.h"
+#include "MreshEngine/Core/Base.h"
 
 namespace MreshEngine
 {

@@ -8,8 +8,8 @@ namespace MreshEngine
 	class MreshEngineEditor : public Application
 	{
 	public:
-		MreshEngineEditor()
-			: Application("MreshEngine Editor")
+		MreshEngineEditor(ApplicationCommandLineArgs args)
+			: Application("MreshEngine Editor", args)
 		{
 			PushLayer(new EditorLayer());
 		}
@@ -19,8 +19,8 @@ namespace MreshEngine
 		}
 	};
 
-	Application* CreateApplication()
+	Application* CreateApplication(ApplicationCommandLineArgs args)
 	{
-		return new MreshEngineEditor();
+		return new MreshEngineEditor(args);
 	}
 }

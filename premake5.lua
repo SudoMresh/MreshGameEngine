@@ -1,4 +1,5 @@
 include "./ThirdParty/premake/customization/solution_items.lua"
+include "Dependencies.lua"
 
 workspace "MreshEngine"
 	architecture "x86_64"
@@ -22,17 +23,6 @@ workspace "MreshEngine"
 	}
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
-
--- Include directories relative to root folder (solution directory)
-IncludeDir = {}
-IncludeDir["GLFW"] = "%{wks.location}/Engine/ThirdParty/GLFW/include"
-IncludeDir["Glad"] = "%{wks.location}/Engine/ThirdParty/Glad/include"
-IncludeDir["ImGui"] = "%{wks.location}/Engine/ThirdParty/imgui"
-IncludeDir["glm"] = "%{wks.location}/Engine/ThirdParty/glm"
-IncludeDir["stb_image"] = "%{wks.location}/Engine/ThirdParty/stb_image"
-IncludeDir["entt"] = "%{wks.location}/Engine/ThirdParty/entt/include"
-IncludeDir["yaml_cpp"] = "%{wks.location}/Engine/ThirdParty/yaml-cpp/include"
-IncludeDir["ImGuizmo"] = "%{wks.location}/Engine/ThirdParty/ImGuizmo"
 
 group "Dependencies"
 	include "ThirdParty/premake"

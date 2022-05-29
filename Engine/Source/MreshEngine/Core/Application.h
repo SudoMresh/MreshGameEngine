@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MreshEngine/Core/Core.h"
+#include "MreshEngine/Core/Base.h"
 
 #include "MreshEngine/Core/Window.h"
 #include "MreshEngine/Core/LayerStack.h"
@@ -15,10 +15,22 @@ int main(int argc, char** argv);
 
 namespace MreshEngine
 {
+	struct ApplicationCommandLineArgs
+	{
+		int Count = 0;
+		char** Args = nullptr;
+
+		const char* operator[](int index) const
+		{
+			ME_CORE_ASSERT(index < Count);
+			return Args[index];
+		}
+	};
+
 	class Application
 	{
 	public:
-		Application(const std::string& name = "Mresh Application");
+		Application(const std::string& name = "Mresh Application", ApplicationCommandLineArgs args = ApplicationCommandLineArgs());
 		virtual ~Application();
 
 		void OnEvent(Event& e);
@@ -34,12 +46,15 @@ namespace MreshEngine
 
 		inline static Application& Get() { return *s_Instance; }
 
+		ApplicationCommandLineArgs GetCommandLineArgs() const { return m_CommandLineArgs; }
+
 	private:
 		void Run();
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
 
 	private:
+		ApplicationCommandLineArgs m_CommandLineArgs;
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
@@ -53,6 +68,6 @@ namespace MreshEngine
 	};
 
 	// To be defined in CLIENT
-	Application* CreateApplication();
+	Application* CreateApplication(ApplicationCommandLineArgs args);
 
 }

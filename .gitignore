@@ -19,3 +19,8 @@ ThirdParty/.DS_Store
 ThirdPart/premake/.DS_Store
 **.xcodeproj
 **.xcworkspace
+
+# Directories
+Engine/ThirdParty/VulkanSDK
+Editor/Assets/Cache
+scripts/__pycache__

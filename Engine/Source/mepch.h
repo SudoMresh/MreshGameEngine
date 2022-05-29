@@ -23,7 +23,7 @@
 #include <unordered_set>
 #include <filesystem>
 
-#include "MreshEngine/Core/Core.h"
+#include "MreshEngine/Core/Base.h"
 
 #include "MreshEngine/Core/Log.h"
 
