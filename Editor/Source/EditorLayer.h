@@ -3,6 +3,7 @@
 #include "MreshEngine.h"
 
 #include "Panels/SceneHierarchyPanel.h"
+#include "Panels/ContentBrowserPanel.h"
 
 #include "MreshEngine/Renderer/EditorCamera.h"
 
@@ -60,5 +61,6 @@ namespace MreshEngine
 
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;
+		ContentBrowserPanel m_ContentBrowserPanel;
 	};
 }
