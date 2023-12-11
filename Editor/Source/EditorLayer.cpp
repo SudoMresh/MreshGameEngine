@@ -14,8 +14,10 @@
 
 namespace MreshEngine
 {
+	extern const std::filesystem::path g_AssetPath;
+
 	EditorLayer::EditorLayer()
-		: Layer("Sandbox2D"), m_CameraController(1280.0f / 720.0f)
+		: Layer("EditorLayer"), m_CameraController(1280.0f / 720.0f)
 	{
 	}
 
@@ -236,11 +238,13 @@ namespace MreshEngine
 
 		ImGui::Begin("Renderer Statistics");
 
+#if 0
 		std::string name = "None";
 		if (m_HoveredEntity)
 			name = m_HoveredEntity.GetComponent<TagComponent>().Tag;
 
 		ImGui::Text("Hovered Entity: %s", name.c_str());
+#endif
 
 		auto stats = Renderer2D::GetStatistics();
 		ImGui::Text("Renderer2D Stats:");
@@ -261,13 +265,26 @@ namespace MreshEngine
 
 		m_ViewportFocuced = ImGui::IsWindowFocused();
 		m_ViewportHovered = ImGui::IsWindowHovered();
-		Application::Get().GetImGuiLayer()->BlockEvents(!m_ViewportFocuced && !m_ViewportHovered);
+
+		Application::Get().GetImGuiLayer()->BlockEvents(/*!m_ViewportFocuced && */!m_ViewportHovered);
 
 		ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
 		m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
 
 		uint32_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
 		ImGui::Image(reinterpret_cast<void*>(textureID), ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
+
+		if (ImGui::BeginDragDropTarget())
+		{
+			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM"))
+			{
+				const wchar_t* path = (const wchar_t*)payload->Data;
+
+				OpenScene(std::filesystem::path(g_AssetPath) / path);
+			}
+
+			ImGui::EndDragDropTarget();
+		}
 
 		// Gizmos
 		Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity();

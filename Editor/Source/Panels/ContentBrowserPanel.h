@@ -4,6 +4,8 @@
 
 namespace MreshEngine
 {
+	class Texture2D;
+
 	class ContentBrowserPanel
 	{
 	public:
@@ -13,5 +15,7 @@ namespace MreshEngine
 
 	private:
 		std::filesystem::path m_CurrentDirectory;
+		Ref<Texture2D> m_DirectoryIcon;
+		Ref<Texture2D> m_FileIcon;
 	};
 }

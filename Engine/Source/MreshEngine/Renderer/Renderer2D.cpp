@@ -120,6 +120,8 @@ namespace MreshEngine
 	void Renderer2D::Shutdown()
 	{
 		ME_PROFILE_FUNCTION();
+
+		delete[] s_Data.QuadVertexBufferBase;
 	}
 
 	void Renderer2D::BeginScene(const OrthographicCamera& camera)
@@ -375,7 +377,13 @@ namespace MreshEngine
 
 	void Renderer2D::DrawSprite(const glm::mat4& transform, SpriteRendererComponent& sprite, int entityID)
 	{
-		DrawQuad(transform, sprite.Color, entityID);
+		if (sprite.Texture)
+		{
+			constexpr glm::vec2 textureCoords[] = { { 0.0f, 0.0f}, { 1.0f, 0.0f}, { 1.0f, 1.0f }, {0.0f, 1.0f} };
+			DrawQuad(transform, textureCoords, sprite.Texture, sprite.TilingFactor, sprite.Color, entityID);
+		}
+		else
+			DrawQuad(transform, sprite.Color, entityID);
 	}
 
 	Renderer2D::Statistics Renderer2D::GetStatistics()
