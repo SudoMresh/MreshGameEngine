@@ -32,6 +32,7 @@ project "MreshEngine"
 	{
 		"Source",
 		"ThirdParty/spdlog/include",
+		"%{IncludeDir.Box2D}",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
@@ -45,6 +46,7 @@ project "MreshEngine"
 
 	links 
 	{ 
+		"Box2D",
 		"GLFW",
 		"Glad",
 		"ImGui",

@@ -105,7 +105,7 @@ namespace MreshEngine
 		for (uint32_t i = 0; i < s_Data.MaxTextureSlots; ++i)
 			samplers[i] = i;
 
-		s_Data.TextureShader = Shader::Create("assets/shaders/Texture.glsl");
+		s_Data.TextureShader = Shader::Create("Assets/Shaders/Texture.glsl");
 
 		s_Data.TextureSlots[0] = s_Data.WhiteTexture;
 
